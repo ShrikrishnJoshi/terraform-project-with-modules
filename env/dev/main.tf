@@ -31,25 +31,6 @@ module "ec2" {
   user_data = file("${path.root}/../../scripts/userdata.sh")
 }
 
-module "rds" {
-  source = "../../modules/rds"
-
-  db_name           = "devdb"
-  engine            = "mysql"
-  engine_version    = "8.0"
-  instance_class    = "db.t3.micro"
-  allocated_storage = 20
-
-  username = "admin"
-  password = "Admin@123"
-
-  subnet_ids = [
-    "subnet-xxxx",
-    "subnet-yyyy"
-  ]
-
-  security_group_ids = ["sg-xxxx"]
-}
 
 module "rds" {
   source = "../../modules/rds"
